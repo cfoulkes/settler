@@ -28,10 +28,26 @@ $client-theme: mat.define-light-theme((
   )
 ));
 
+$client-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $client-primary,
+    accent: $client-accent,
+    warn: $client-warn,
+  )
+));
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($client-theme);
+
+.theme-dark {
+  @include mat.all-component-colors($client-theme-dark);
+}
+
+// .light-theme {
+//   @include mat.all-component-colors($client-theme);
+// }
 
 /* You can add global styles to this file, and also import other style files */
 
