@@ -9,7 +9,15 @@ namespace server.Data;
 
 public class DataContext : DbContext
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+    // static DataContext()
+    // {
+    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    // }
+
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
 
     public DbSet<User> Users => Set<User>();
     public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
@@ -18,17 +26,19 @@ public class DataContext : DbContext
     {
         var entries = ChangeTracker
             .Entries()
-            .Where(e => e.Entity is EntityBase && (
-                    e.State == EntityState.Added
-                    || e.State == EntityState.Modified));
+            .Where(
+                e =>
+                    e.Entity is EntityBase
+                    && (e.State == EntityState.Added || e.State == EntityState.Modified)
+            );
 
         foreach (var entityEntry in entries)
         {
-            ((EntityBase)entityEntry.Entity).UpdatedDate = DateTime.Now;
+            ((EntityBase)entityEntry.Entity).ModifiedDate = DateTime.UtcNow;
 
             if (entityEntry.State == EntityState.Added)
             {
-                ((EntityBase)entityEntry.Entity).CreatedDate = DateTime.Now;
+                ((EntityBase)entityEntry.Entity).CreatedDate = DateTime.UtcNow;
             }
         }
 
@@ -39,29 +49,13 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<UserStatus>().HasData(new UserStatus
-        {
-        	Id = 1,
-            Description = "Active"
-        },
-        new UserStatus{
-        	Id = 2,
-            Description = "Pending"
-        },
-        new UserStatus{
-        	Id = 3,
-            Description = "Locked"
-        }
-        );
-        modelBuilder.Entity<Role>().HasData(new Role
-        {
-        	Id = 1,
-            Description = "Administrator"
-        }
-        );
-        // modelBuilder.Entity<User>().HasData(new Product
-        // {
-        // 	Id = 1,
-        // });
+        modelBuilder
+            .Entity<UserStatus>()
+            .HasData(
+                new UserStatus { Id = 1, Description = "Active" },
+                new UserStatus { Id = 2, Description = "Pending" },
+                new UserStatus { Id = 3, Description = "Locked" }
+            );
+        modelBuilder.Entity<Role>().HasData(new Role { Id = 1, Description = "Administrator" });
     }
 }

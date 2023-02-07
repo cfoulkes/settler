@@ -1,5 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using server.Data;
+global using Microsoft.EntityFrameworkCore;
+global using server.Data;
+global using server.Repositories;
+global using server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddDbContext<DataContext>(options =>
-// {
-//     options.UseP(builder.Configuration["ConnectionString"]);
-// }
-
 builder.Services
-    .AddEntityFrameworkNpgsql()
-    .AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration["ConnectionString"]));
+// .AddEntityFrameworkNpgsql()
+.AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration["ConnectionString"]));
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 
