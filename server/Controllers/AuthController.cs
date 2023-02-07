@@ -22,6 +22,14 @@ public class AuthController : ControllerBase
     [HttpPost(Name = "CreateUser")]
     public async Task<ActionResult> CreateUser(CreateUserDto createUserDto)
     {
+        try
+        {
+            await AuthService.CreateUser(createUserDto.Username, createUserDto.Password);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
         return Ok();
     }
 }

@@ -2,6 +2,7 @@ global using Microsoft.EntityFrameworkCore;
 global using server.Data;
 global using server.Repositories;
 global using server.Services;
+global using server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

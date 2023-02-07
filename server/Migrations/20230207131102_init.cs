@@ -37,8 +37,8 @@ namespace server.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
-                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    PasswordSalt = table.Column<string>(type: "text", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -93,17 +93,22 @@ namespace server.Migrations
             migrationBuilder.InsertData(
                 table: "Role",
                 columns: new[] { "Id", "CreatedDate", "Description", "ModifiedDate" },
-                values: new object[] { 1, new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4450), "Administrator", new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4450) });
+                values: new object[] { 1, new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350), "Administrator", new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350) });
 
             migrationBuilder.InsertData(
                 table: "UserStatuses",
                 columns: new[] { "Id", "CreatedDate", "Description", "ModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4120), "Active", new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130) },
-                    { 2, new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130), "Pending", new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130) },
-                    { 3, new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130), "Locked", new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130) }
+                    { 1, new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100), "Active", new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100) },
+                    { 2, new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100), "Pending", new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100) },
+                    { 3, new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100), "Locked", new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100) }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CreatedDate", "Email", "ModifiedDate", "PasswordHash", "PasswordSalt", "Username" },
+                values: new object[] { 1, new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380), "", new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRole_RoleId",

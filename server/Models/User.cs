@@ -10,9 +10,8 @@ public class User : EntityBase
     public int Id { get; set; }
     public string Username { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public byte[] PasswordHash { get; set; } = new byte[32];
-    public byte[] PasswordSalt { get; set; } = new byte[32];
+    public string PasswordHash { get; set; } = string.Empty;
+    public string PasswordSalt { get; set; } = string.Empty;
 
     public virtual IList<UserRole> UserRoles { get; set; }
-
 }

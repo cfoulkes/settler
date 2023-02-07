@@ -7,6 +7,6 @@ namespace server.Services
 {
     public interface IAuthService
     {
-        void CreateUser(string email, string password);
+        Task<User> CreateUser(string username, string password);
     }
 }

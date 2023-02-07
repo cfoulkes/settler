@@ -48,9 +48,9 @@ namespace server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4450),
+                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350),
                             Description = "Administrator",
-                            ModifiedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4450)
+                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350)
                         });
                 });
 
@@ -72,13 +72,13 @@ namespace server.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<byte[]>("PasswordHash")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
-                    b.Property<byte[]>("PasswordSalt")
+                    b.Property<string>("PasswordSalt")
                         .IsRequired()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -87,6 +87,18 @@ namespace server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380),
+                            Email = "",
+                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380),
+                            PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
+                            PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("server.Models.UserRole", b =>
@@ -144,23 +156,23 @@ namespace server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4120),
+                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
                             Description = "Active",
-                            ModifiedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130)
+                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130),
+                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
                             Description = "Pending",
-                            ModifiedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130)
+                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130),
+                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
                             Description = "Locked",
-                            ModifiedDate = new DateTime(2023, 2, 7, 12, 22, 1, 2, DateTimeKind.Utc).AddTicks(4130)
+                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
                         });
                 });
 
