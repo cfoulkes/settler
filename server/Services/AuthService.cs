@@ -22,6 +22,7 @@ public class AuthService : IAuthService
 
     public async Task<User> CreateUser(string username, string password)
     {
+        Console.WriteLine("AuthService.CreateUser");
         var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
         if (existingUser != null)
@@ -44,18 +45,25 @@ public class AuthService : IAuthService
         return user;
     }
 
-    // private void CreatePasswordHash(
-    //     string password,
-    //     out byte[] passwordHash,
-    //     out byte[] passwordSalt
-    // )
-    // {
-    //     using (var hmac = new HMACSHA512())
-    //     {
-    //         passwordSalt = hmac.Key;
-    //         passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-    //     }
-    // }
+    public async Task<User?> Login(string username, string password)
+    {
+        Console.WriteLine("AuthService.Login");
+        var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        var passwordChecked = CheckPasswordHash(password, user.PasswordHash, user.PasswordSalt);
+
+        if (!passwordChecked)
+        {
+            return null;
+        }
+
+        return user;
+    }
 
     private void CreatePasswordHash(
         string password,
@@ -74,6 +82,24 @@ public class AuthService : IAuthService
 
         passwordSalt = Convert.ToHexString(salt);
         passwordHash = Convert.ToHexString(hash);
+    }
+
+    private bool CheckPasswordHash(string password, string passwordHash, string passwordSalt)
+    {
+        var salt = Convert.FromHexString(passwordSalt);
+        var hash = Rfc2898DeriveBytes.Pbkdf2(
+            Encoding.UTF8.GetBytes(password),
+            salt,
+            iterations,
+            hashAlgorithm,
+            keySize
+        );
+
+        Console.WriteLine($"password {password}");
+        Console.WriteLine($"passwordHash {passwordHash}");
+        Console.WriteLine($"calcHash {Convert.ToHexString(hash)}");
+
+        return passwordHash.Equals(Convert.ToHexString(hash));
     }
 
     private string CreateRandomToken(int length = 32)

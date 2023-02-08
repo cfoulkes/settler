@@ -19,12 +19,31 @@ public class AuthController : ControllerBase
         this.AuthService = authService;
     }
 
-    [HttpPost(Name = "CreateUser")]
+    [HttpPost("CreateUser")]
     public async Task<ActionResult> CreateUser(CreateUserDto createUserDto)
     {
         try
         {
-            await AuthService.CreateUser(createUserDto.Username, createUserDto.Password);
+            var user = await AuthService.CreateUser(createUserDto.Username, createUserDto.Password);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+        return Ok();
+    }
+
+    [HttpPost("Login")]
+    public async Task<ActionResult> Login(LoginDto loginDto)
+    {
+        try
+        {
+            var user = await AuthService.Login(loginDto.Username, loginDto.Password);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
         }
         catch (System.Exception)
         {
