@@ -43,3 +43,10 @@
 /Users/cfoulkes/Dev/settler/server/Server/obj/Debug/net7.0/Server.pdb
 /Users/cfoulkes/Dev/settler/server/Server/obj/Debug/net7.0/Server.genruntimeconfig.cache
 /Users/cfoulkes/Dev/settler/server/Server/obj/Debug/net7.0/ref/Server.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/cfoulkes/Dev/settler/server/Server/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

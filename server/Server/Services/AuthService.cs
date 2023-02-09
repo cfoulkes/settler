@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Server.Services;
 
@@ -14,10 +17,12 @@ public class AuthService : IAuthService
     HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
 
     private readonly DataContext context;
+    private readonly IConfiguration config;
 
-    public AuthService(DataContext context)
+    public AuthService(DataContext context, IConfiguration config)
     {
         this.context = context;
+        this.config = config;
     }
 
     public async Task<User> CreateUser(string username, string password)
@@ -62,6 +67,8 @@ public class AuthService : IAuthService
             return null;
         }
 
+        string tokenString = GenerateJwtToken(user);
+
         return user;
     }
 
@@ -100,6 +107,33 @@ public class AuthService : IAuthService
         Console.WriteLine($"calcHash {Convert.ToHexString(hash)}");
 
         return passwordHash.Equals(Convert.ToHexString(hash));
+    }
+
+    private string GenerateJwtToken(User user)
+    {
+        var issuer = config["Jwt:Issuer"];
+        var audience = config["Jwt:Issuer"];
+        var key = config["Jwt:Key"];
+
+        var claims = new Claim[] { };
+
+        var signingCredentials = new SigningCredentials(
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+            SecurityAlgorithms.HmacSha256
+        );
+
+        var token = new JwtSecurityToken(
+            issuer,
+            audience,
+            claims,
+            null,
+            DateTime.UtcNow.AddHours(1),
+            signingCredentials
+        );
+
+        string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
+        Console.WriteLine($"token {tokenValue}");
+        return tokenValue;
     }
 
     private string CreateRandomToken(int length = 32)
