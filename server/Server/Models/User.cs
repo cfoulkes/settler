@@ -13,5 +13,7 @@ public class User : EntityBase
     public string PasswordHash { get; set; } = string.Empty;
     public string PasswordSalt { get; set; } = string.Empty;
 
-    public virtual IList<UserRole>? UserRoles { get; set; }
+    public int UserStatusId { get; set; }
+    public UserStatus? UserStatus { get; set; }
+    public virtual IList<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }

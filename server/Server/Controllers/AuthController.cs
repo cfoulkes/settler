@@ -34,21 +34,24 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("Login")]
-    public async Task<ActionResult> Login(LoginDto loginDto)
+    public async Task<ActionResult<string>> Login(LoginDto loginDto)
     {
         try
         {
-            var user = await AuthService.Login(loginDto.Username, loginDto.Password);
+            var token = await AuthService.Login(loginDto.Username, loginDto.Password);
 
-            if (user == null)
+            if (token == null)
             {
                 return NotFound();
             }
+            return Ok(token);
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-            throw;
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                $"Error loading data: {ex.Message}"
+            );
         }
-        return Ok();
     }
 }

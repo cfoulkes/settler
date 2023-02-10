@@ -57,7 +57,13 @@ public class DataContext : DbContext
                 new UserStatus { Id = 3, Description = "Locked" }
             );
 
-        modelBuilder.Entity<Role>().HasData(new Role { Id = 1, Description = "Administrator" });
+        modelBuilder
+            .Entity<Role>()
+            .HasData(
+                new Role { Id = 1, Description = "Admin" },
+                new Role { Id = 2, Description = "Intake" },
+                new Role { Id = 3, Description = "Manager" }
+            );
 
         modelBuilder
             .Entity<User>()
@@ -65,11 +71,64 @@ public class DataContext : DbContext
                 new User
                 {
                     Id = 1,
+                    UserStatusId = 1,
                     Username = "admin",
                     PasswordHash =
                         "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                     PasswordSalt =
                         "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7"
+                },
+                new User
+                {
+                    Id = 2,
+                    UserStatusId = 1,
+                    Username = "all",
+                    PasswordHash =
+                        "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
+                    PasswordSalt =
+                        "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7"
+                }
+            );
+
+        modelBuilder
+            .Entity<UserRole>()
+            .HasData(
+                new UserRole
+                {
+                    Id = 1,
+                    UserId = 1,
+                    RoleId = 1
+                }
+            );
+
+        modelBuilder
+            .Entity<UserRole>()
+            .HasData(
+                new UserRole
+                {
+                    Id = 2,
+                    UserId = 2,
+                    RoleId = 1
+                }
+            );
+        modelBuilder
+            .Entity<UserRole>()
+            .HasData(
+                new UserRole
+                {
+                    Id = 3,
+                    UserId = 2,
+                    RoleId = 2
+                }
+            );
+        modelBuilder
+            .Entity<UserRole>()
+            .HasData(
+                new UserRole
+                {
+                    Id = 4,
+                    UserId = 2,
+                    RoleId = 3
                 }
             );
     }

@@ -22,7 +22,7 @@ namespace Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("server.Models.Role", b =>
+            modelBuilder.Entity("Server.Models.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,13 +48,27 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350),
-                            Description = "Administrator",
-                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8350)
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            Description = "Admin",
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            Description = "Intake",
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            Description = "Manager",
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
                         });
                 });
 
-            modelBuilder.Entity("server.Models.User", b =>
+            modelBuilder.Entity("Server.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,11 +94,16 @@ namespace Server.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("UserStatusId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserStatusId");
 
                     b.ToTable("Users");
 
@@ -92,16 +111,28 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380),
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6180),
                             Email = "",
-                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8380),
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6180),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
+                            UserStatusId = 1,
                             Username = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6190),
+                            Email = "",
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6190),
+                            PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
+                            PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
+                            UserStatusId = 1,
+                            Username = "all"
                         });
                 });
 
-            modelBuilder.Entity("server.Models.UserRole", b =>
+            modelBuilder.Entity("Server.Models.UserRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,9 +159,43 @@ namespace Server.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6330),
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6330),
+                            RoleId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6350),
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6350),
+                            RoleId = 1,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6370),
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6370),
+                            RoleId = 2,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6390),
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6390),
+                            RoleId = 3,
+                            UserId = 2
+                        });
                 });
 
-            modelBuilder.Entity("server.Models.UserStatus", b =>
+            modelBuilder.Entity("Server.Models.UserStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,35 +221,46 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5250),
                             Description = "Active",
-                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260),
                             Description = "Pending",
-                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100),
+                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260),
                             Description = "Locked",
-                            ModifiedDate = new DateTime(2023, 2, 7, 13, 11, 2, 618, DateTimeKind.Utc).AddTicks(8100)
+                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
                         });
                 });
 
-            modelBuilder.Entity("server.Models.UserRole", b =>
+            modelBuilder.Entity("Server.Models.User", b =>
                 {
-                    b.HasOne("server.Models.Role", "Role")
+                    b.HasOne("Server.Models.UserStatus", "UserStatus")
+                        .WithMany()
+                        .HasForeignKey("UserStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserStatus");
+                });
+
+            modelBuilder.Entity("Server.Models.UserRole", b =>
+                {
+                    b.HasOne("Server.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("server.Models.User", "User")
+                    b.HasOne("Server.Models.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -195,7 +271,7 @@ namespace Server.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("server.Models.User", b =>
+            modelBuilder.Entity("Server.Models.User", b =>
                 {
                     b.Navigation("UserRoles");
                 });

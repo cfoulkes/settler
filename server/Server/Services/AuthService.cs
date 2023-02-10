@@ -27,7 +27,6 @@ public class AuthService : IAuthService
 
     public async Task<User> CreateUser(string username, string password)
     {
-        Console.WriteLine("AuthService.CreateUser");
         var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
         if (existingUser != null)
@@ -36,7 +35,7 @@ public class AuthService : IAuthService
         }
 
         CreatePasswordHash(password, out string passwordHash, out string passwordSalt);
-        Console.WriteLine($"password {password} hash {passwordHash}   salt {passwordSalt}");
+
         var user = new User
         {
             Username = username,
@@ -50,10 +49,12 @@ public class AuthService : IAuthService
         return user;
     }
 
-    public async Task<User?> Login(string username, string password)
+    public async Task<string?> Login(string username, string password)
     {
-        Console.WriteLine("AuthService.Login");
-        var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        var user = await context.Users
+            .Include(u => u.UserRoles)
+            .ThenInclude(ur => ur.Role)
+            .FirstOrDefaultAsync(u => u.Username == username);
 
         if (user == null)
         {
@@ -68,8 +69,9 @@ public class AuthService : IAuthService
         }
 
         string tokenString = GenerateJwtToken(user);
+        Console.WriteLine($"token {tokenString}");
 
-        return user;
+        return tokenString;
     }
 
     private void CreatePasswordHash(
@@ -112,10 +114,17 @@ public class AuthService : IAuthService
     private string GenerateJwtToken(User user)
     {
         var issuer = config["Jwt:Issuer"];
-        var audience = config["Jwt:Issuer"];
+        var audience = config["Jwt:Audience"];
         var key = config["Jwt:Key"];
 
-        var claims = new Claim[] { };
+        var claims = new List<Claim> { new(JwtRegisteredClaimNames.Sub, user.Id.ToString()) };
+
+        user.UserRoles
+            .ToList()
+            .ForEach(ur =>
+            {
+                claims.Add(new Claim(ClaimTypes.Role, ur.Role.Description));
+            });
 
         var signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
