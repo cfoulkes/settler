@@ -7,6 +7,7 @@ namespace Server.Services
 {
     public interface IAuthService
     {
+        Task<List<User>> GetAllUsers();
         Task<User> CreateUser(string username, string password);
         Task<string?> Login(string username, string password);
     }

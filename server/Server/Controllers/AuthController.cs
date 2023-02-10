@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Server.Dtos;
 using Server.Services;
@@ -13,10 +14,26 @@ namespace Server.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService AuthService;
+    private readonly IMapper mapper;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, IMapper mapper)
     {
         this.AuthService = authService;
+        this.mapper = mapper;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<UserDto>>> GetAllUsers()
+    {
+        try
+        {
+            var users = await AuthService.GetAllUsers();
+            return Ok(mapper.Map<List<User>, List<UserDto>>(users));
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
     }
 
     [HttpPost("CreateUser")]
@@ -25,12 +42,15 @@ public class AuthController : ControllerBase
         try
         {
             var user = await AuthService.CreateUser(createUserDto.Username, createUserDto.Password);
+            return Ok();
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-            throw;
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                $"Error loading data: {ex.Message}"
+            );
         }
-        return Ok();
     }
 
     [HttpPost("Login")]

@@ -25,6 +25,14 @@ public class AuthService : IAuthService
         this.config = config;
     }
 
+    public async Task<List<User>> GetAllUsers()
+    {
+        return await context.Users
+            .Include(u => u.UserRoles)
+            .ThenInclude(ur => ur.Role)
+            .ToListAsync();
+    }
+
     public async Task<User> CreateUser(string username, string password)
     {
         var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
