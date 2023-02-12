@@ -1,0 +1,12 @@
+.authentication-card {
+  width: 30%;
+  margin: 0 auto;
+
+  .mat-card-actions{
+    justify-content: center;
+  }
+}
+
+.authentication-card-container {
+  min-height: 100vh;
+}

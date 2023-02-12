@@ -1,16 +1,12 @@
-import { AuthenticationService } from './services/authentication.service';
 import { DOCUMENT } from '@angular/common';
-import { Component, HostBinding, Inject, OnInit, Renderer2 } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, Inject, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-navholdertemp',
+  templateUrl: './navholdertemp.component.html',
+  styleUrls: ['./navholdertemp.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'Settler';
-
+export class NavholdertempComponent {
   private currentTheme = 'theme-light';
 
   get isDarkMode(): boolean {
@@ -19,17 +15,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2,
-    private titleService: Title,
-    private authenticationService: AuthenticationService
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle(this.title);
     this.currentTheme = localStorage.getItem('activeTheme') || 'theme-light';
     this.renderer.setAttribute(this.document.body, 'class', this.currentTheme);
-
-
   }
 
   darkModeChanged(isDarkMode: boolean) {
