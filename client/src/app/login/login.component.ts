@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
 import { SharedModule } from '../shared/shared.module';
+import { AuthenticationService } from '../shared/auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   public theForm!: FormGroup;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.theForm = new FormGroup({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit() {
-    this.authenticationService.login(
+    this.authService.login(
       this.theForm.get('username')!.value,
       this.theForm!.get('password')!.value
     );

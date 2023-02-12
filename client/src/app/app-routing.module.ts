@@ -2,7 +2,7 @@ import { ShellComponent } from './shell/shell.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const routes: Routes = [{
   path: '',

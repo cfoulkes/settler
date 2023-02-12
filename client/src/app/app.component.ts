@@ -1,7 +1,7 @@
-import { AuthenticationService } from './services/authentication.service';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostBinding, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthenticationService } from './shared/auth/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     private titleService: Title,
-    private authenticationService: AuthenticationService
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
