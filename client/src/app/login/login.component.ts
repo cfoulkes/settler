@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(
       this.theForm.get('username')!.value,
       this.theForm!.get('password')!.value
-    );
+    ).subscribe(() => {
+
+    });
   }
 
 

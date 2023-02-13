@@ -1,7 +1,8 @@
 {
-  "/api/v1/advisors": {
-  "target": "http://localhost:5000/",
+  "/api/**": {
+  "target": "http://localhost:5034/",
   "secure": false,
   "logLevel": "debug"
   }
 }
+
