@@ -4,12 +4,17 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
+// const jwtHelper = new JwtHelperService();
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   isLoggedIn = false;
-  username: string = '';
+  username?: string;
+  loggedInDateTime?: Date;
+  authToken?: string;
+  tokenPayload: any;
+  userId?: number;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -26,7 +31,7 @@ export class AuthenticationService {
       tap(resp => {
         console.log(`success ${JSON.stringify(resp)}`);
         this.username = context.username;
-        //this.processLoginResponse(resp);
+        this.processLoginResponse(resp);
       }),
       map(resp => true),
 
@@ -35,6 +40,15 @@ export class AuthenticationService {
         return throwError(() => error);
       })
     );
-
   }
+
+  processLoginResponse(response: any) {
+    this.isLoggedIn = true;
+    this.loggedInDateTime = new Date();
+    this.authToken = response.token;
+    // this.tokenPayload = helper.decodeToken(this.authToken);
+    this.userId = this.tokenPayload.sub;
+
+  };
+
 }

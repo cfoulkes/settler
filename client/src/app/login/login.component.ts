@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AuthenticationService } from '../shared/auth/authentication.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +19,10 @@ import { AuthenticationService } from '../shared/auth/authentication.service';
 export class LoginComponent implements OnInit {
 
   public theForm!: FormGroup;
+  isLoading = false;
+  loginFailed: boolean = false;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.theForm = new FormGroup({
@@ -28,12 +32,29 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.isLoading = true;
+
     this.authService.login(
       this.theForm.get('username')!.value,
       this.theForm!.get('password')!.value
-    ).subscribe(() => {
+    )
+      .subscribe({
+        next: (res) => this.processSuccess(res),
+        error: (err) => this.processError(err)
+      });
+  }
 
-    });
+  processSuccess(res: any) {
+    this.navigateToInitialPage();
+  }
+
+  processError(error: HttpErrorResponse) {
+    this.loginFailed = true;
+    this.isLoading = false;
+  }
+
+  navigateToInitialPage() {
+    this.router.navigate(['/']);
   }
 
 
