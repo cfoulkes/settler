@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-// const jwtHelper = new JwtHelperService();
+const jwtHelper = new JwtHelperService();
 @Injectable({
   providedIn: 'root'
 })
@@ -46,7 +47,7 @@ export class AuthenticationService {
     this.isLoggedIn = true;
     this.loggedInDateTime = new Date();
     this.authToken = response.token;
-    // this.tokenPayload = helper.decodeToken(this.authToken);
+    this.tokenPayload = jwtHelper.decodeToken(this.authToken!);
     this.userId = this.tokenPayload.sub;
 
   };

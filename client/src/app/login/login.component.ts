@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToInitialPage() {
-    this.router.navigate(['/']);
+    this.router.navigate(['shell']);
   }
 
 
