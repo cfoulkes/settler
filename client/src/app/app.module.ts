@@ -4,22 +4,21 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
-import { NavholdertempComponent } from './navholdertemp/navholdertemp.component';
 import { ShellComponent } from './shell/shell.component';
 import { SharedModule } from './shared/shared.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    NavholdertempComponent,
-    ShellComponent
+    ShellComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    DashboardModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

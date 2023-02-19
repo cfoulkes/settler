@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  processSuccess(res: any) {
+  processSuccess(res: boolean) {
     this.navigateToInitialPage();
   }
 
@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToInitialPage() {
-    this.router.navigate(['shell']);
+    this.isLoading = true;
+
+    this.router.navigate(['dashboard']);
   }
 
 

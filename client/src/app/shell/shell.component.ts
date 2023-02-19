@@ -18,6 +18,7 @@ export class ShellComponent {
     constructor(private observer: BreakpointObserver) { }
 
     ngAfterViewInit(): void {
+        this.sidenav.mode = 'over';
         this.observer.observe(['(max-width: 800px)']).subscribe(res => {
             if (res.matches) {
                 this.sidenav.mode = 'over';

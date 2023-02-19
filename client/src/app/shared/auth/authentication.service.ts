@@ -20,7 +20,6 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public login(username: string, password: string): Observable<any> {
-    console.log(`login`)
     const url = 'api/auth/login';
     // this.authenticationClient.login(username, password).subscribe((token) => {
     //   localStorage.setItem(this.tokenKey, token);
@@ -30,14 +29,12 @@ export class AuthenticationService {
 
     return this.httpClient.post<string>(url, context).pipe(
       tap(resp => {
-        console.log(`success ${JSON.stringify(resp)}`);
         this.username = context.username;
         this.processLoginResponse(resp);
       }),
       map(resp => true),
 
       catchError((error: HttpErrorResponse) => {
-        console.log(`error ${JSON.stringify(error)}`);
         return throwError(() => error);
       })
     );
