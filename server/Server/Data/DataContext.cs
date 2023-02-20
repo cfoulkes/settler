@@ -103,37 +103,47 @@ public class DataContext : DbContext
                     Id = 1,
                     UserId = 1,
                     RoleId = 1
-                }
-            );
-
-        modelBuilder
-            .Entity<UserRole>()
-            .HasData(
+                },
                 new UserRole
                 {
                     Id = 2,
                     UserId = 2,
                     RoleId = 1
-                }
-            );
-        modelBuilder
-            .Entity<UserRole>()
-            .HasData(
+                },
                 new UserRole
                 {
                     Id = 3,
                     UserId = 2,
                     RoleId = 2
-                }
-            );
-        modelBuilder
-            .Entity<UserRole>()
-            .HasData(
+                },
                 new UserRole
                 {
                     Id = 4,
                     UserId = 2,
                     RoleId = 3
+                }
+            );
+
+        modelBuilder
+            .Entity<Client>()
+            .HasData(
+                new Client
+                {
+                    Id = 1,
+                    FirstName = "Fred",
+                    LastName = "Flintstone"
+                },
+                new Client
+                {
+                    Id = 2,
+                    FirstName = "Wilma",
+                    LastName = "Flintstone"
+                },
+                new Client
+                {
+                    Id = 3,
+                    FirstName = "Barney",
+                    LastName = "Rubble"
                 }
             );
     }

@@ -12,6 +12,8 @@ namespace Server.Controllers.Utilities
         public AutoMapperProfile()
         {
             CreateMap<User, UserDto>();
+
+            CreateMap<Client, ClientSearchDto>();
         }
     }
 }

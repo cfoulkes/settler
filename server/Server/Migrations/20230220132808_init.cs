@@ -130,13 +130,23 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DateOfBirth", "FirstName", "LastName", "ModifiedBy", "ModifiedDate" },
+                values: new object[,]
+                {
+                    { 1, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320), null, "Fred", "Flintstone", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320) },
+                    { 2, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320), null, "Wilma", "Flintstone", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320) },
+                    { 3, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320), null, "Barney", "Rubble", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1320) }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Role",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "RowVer" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7760), "Admin", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7760), 0L },
-                    { 2, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770), "Intake", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770), 0L },
-                    { 3, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770), "Manager", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770), 0L }
+                    { 1, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1220), "Admin", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1220), 0L },
+                    { 2, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1220), "Intake", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1220), 0L },
+                    { 3, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1230), "Manager", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1230), 0L }
                 });
 
             migrationBuilder.InsertData(
@@ -144,9 +154,9 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "RowVer" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510), "Active", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510), 0L },
-                    { 2, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510), "Pending", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510), 0L },
-                    { 3, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7520), "Locked", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7520), 0L }
+                    { 1, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), "Active", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), 0L },
+                    { 2, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), "Pending", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), 0L },
+                    { 3, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), "Locked", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(960), 0L }
                 });
 
             migrationBuilder.InsertData(
@@ -154,8 +164,8 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "ModifiedBy", "ModifiedDate", "PasswordHash", "PasswordSalt", "UserStatusId", "Username" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790), "", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1, "admin" },
-                    { 2, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790), "", "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1, "all" }
+                    { 1, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1270), "", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1270), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1, "admin" },
+                    { 2, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1270), "", "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1270), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1, "all" }
                 });
 
             migrationBuilder.InsertData(
@@ -163,10 +173,10 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "ModifiedBy", "ModifiedDate", "RoleId", "RowVer", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7810), "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7810), 1, 0L, 1 },
-                    { 2, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7830), "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7830), 1, 0L, 2 },
-                    { 3, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7840), "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7840), 2, 0L, 2 },
-                    { 4, "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7850), "", new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7850), 3, 0L, 2 }
+                    { 1, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1290), "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1290), 1, 0L, 1 },
+                    { 2, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), 1, 0L, 2 },
+                    { 3, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), 2, 0L, 2 },
+                    { 4, "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), "", new DateTime(2023, 2, 20, 13, 28, 8, 717, DateTimeKind.Utc).AddTicks(1300), 3, 0L, 2 }
                 });
 
             migrationBuilder.CreateIndex(
