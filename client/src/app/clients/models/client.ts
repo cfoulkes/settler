@@ -5,14 +5,11 @@ export class Client {
   rowVer: number;
 
   constructor(
-    id: number,
-    firstName: string,
-    lastName: string,
-    rowVer: number,
+    obj?: any
   ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.rowVer = rowVer;
+    this.id = obj.id;
+    this.firstName = obj.firstName;
+    this.lastName = obj.lastName;
+    this.rowVer = obj.rowVer;
   }
 }

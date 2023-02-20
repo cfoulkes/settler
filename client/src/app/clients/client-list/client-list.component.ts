@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { ClientService } from './../services/client.service';
+import { Component, OnInit } from '@angular/core';
+import { Client } from '../models/client';
 
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.scss']
 })
-export class ClientListComponent {
+export class ClientListComponent implements OnInit {
+
+  clients: Client[] = [];
+
+  constructor(private clientService: ClientService) { }
+
+
+
+  ngOnInit(): void {
+    this.clientService.getAllClients().subscribe((clients) => {
+      this.clients = clients;
+    })
+  }
 
 }
