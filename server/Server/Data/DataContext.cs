@@ -22,6 +22,8 @@ public class DataContext : DbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
 
+    public DbSet<Client> Clients => Set<Client>();
+
     public override int SaveChanges()
     {
         var entries = ChangeTracker
@@ -48,6 +50,9 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>().Property(b => b.RowVer).IsRowVersion();
+        modelBuilder.Entity<Client>().Property(b => b.RowVer).IsRowVersion();
 
         modelBuilder
             .Entity<UserStatus>()

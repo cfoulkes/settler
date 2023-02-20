@@ -7,7 +7,6 @@ namespace Server.Models
 {
     public class Role : EntityBase
     {
-        public int Id { get; set; }
         public string Description { get; set; } = string.Empty;
     }
 }

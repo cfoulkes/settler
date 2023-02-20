@@ -22,6 +22,50 @@ namespace Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Server.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateOnly?>("DateOfBirth")
+                        .HasColumnType("date");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<uint>("RowVer")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("xid")
+                        .HasColumnName("xmin");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("Server.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -30,6 +74,10 @@ namespace Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -37,8 +85,15 @@ namespace Server.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<long>("RowVer")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -48,23 +103,32 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7760),
                             Description = "Admin",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7760),
+                            RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770),
                             Description = "Intake",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770),
+                            RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770),
                             Description = "Manager",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6140)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7770),
+                            RowVer = 0L
                         });
                 });
 
@@ -76,10 +140,18 @@ namespace Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -93,6 +165,12 @@ namespace Server.Migrations
                     b.Property<string>("PasswordSalt")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<uint>("RowVer")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("xid")
+                        .HasColumnName("xmin");
 
                     b.Property<int>("UserStatusId")
                         .HasColumnType("integer");
@@ -111,22 +189,28 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6180),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790),
                             Email = "",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6180),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
+                            RowVer = 0u,
                             UserStatusId = 1,
                             Username = "admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6190),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790),
                             Email = "",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6190),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7790),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
+                            RowVer = 0u,
                             UserStatusId = 1,
                             Username = "all"
                         });
@@ -140,14 +224,25 @@ namespace Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
+
+                    b.Property<long>("RowVer")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
@@ -164,33 +259,45 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6330),
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6330),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7810),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7810),
                             RoleId = 1,
+                            RowVer = 0L,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6350),
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6350),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7830),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7830),
                             RoleId = 1,
+                            RowVer = 0L,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6370),
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6370),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7840),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7840),
                             RoleId = 2,
+                            RowVer = 0L,
                             UserId = 2
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6390),
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 256, DateTimeKind.Utc).AddTicks(6390),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7850),
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7850),
                             RoleId = 3,
+                            RowVer = 0L,
                             UserId = 2
                         });
                 });
@@ -203,6 +310,10 @@ namespace Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -210,8 +321,15 @@ namespace Server.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<long>("RowVer")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -221,23 +339,32 @@ namespace Server.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5250),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510),
                             Description = "Active",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510),
+                            RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510),
                             Description = "Pending",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7510),
+                            RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260),
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7520),
                             Description = "Locked",
-                            ModifiedDate = new DateTime(2023, 2, 10, 12, 31, 38, 255, DateTimeKind.Utc).AddTicks(5260)
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 2, 20, 13, 10, 19, 907, DateTimeKind.Utc).AddTicks(7520),
+                            RowVer = 0L
                         });
                 });
 
