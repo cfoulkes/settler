@@ -1,0 +1,45 @@
+.menu-row {
+  height: 64px;
+  width: 100%;
+}
+
+.menu-icon-container {
+  width: 32px;
+  height: 32px;
+}
+
+.menu-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.menu-content {
+  padding-left: 20px;
+  height: 48px;
+  width: 100%;
+  text-decoration: none;
+  color: #969a9e;
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.active {
+  padding-left: 18px;
+  margin-right: 16px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  background-color: #ebf4ff;
+  border-left: 2px solid #3A90EF;
+}
+
+.text {
+  margin-left: 20px;
+  width: 100%;
+}

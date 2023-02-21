@@ -1,0 +1,16 @@
+<div class="menu-row" fxLayout="row" fxLayoutAlign="start center">
+
+  <div class="menu-content" fxLayout="row" fxLayoutAlign="start center" [routerLink]="menuItem.routePath"
+    routerLinkActive="active" #rla="routerLinkActive" (click)="onClicked()">
+
+    <div class="menu-icon-container" fxLayoutAlign="center center">
+      <!-- <img class="menu-icon" [src]="rla.isActive ? menuItem.activeIconName : menuItem.iconName" /> -->
+      <mat-icon>{{menuItem.activeIconName}}</mat-icon>
+
+    </div>
+
+    <div class="text" translate>{{menuItem.nameKey}}</div>
+
+  </div>
+
+</div>

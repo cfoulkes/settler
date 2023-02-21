@@ -12,7 +12,7 @@ export class ClientService {
   constructor(private httpClient: HttpClient) { }
 
   getAllClients(): Observable<Client[]> {
-    const url = `api/clients`;
+    const url = `api/client`;
 
     return this.httpClient.get<Client[]>(url)
       .pipe(
