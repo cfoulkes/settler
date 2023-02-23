@@ -43,6 +43,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<ClientService>();
+builder.Services.AddScoped<ClientRepository>();
 
 var app = builder.Build();
 
