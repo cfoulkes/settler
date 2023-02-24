@@ -7,46 +7,54 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 const jwtHelper = new JwtHelperService();
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthenticationService {
-  isLoggedIn = false;
-  username?: string;
-  loggedInDateTime?: Date;
-  authToken?: string;
-  tokenPayload: any;
-  userId?: number;
+    isLoggedIn = false;
+    username?: string;
+    loggedInDateTime?: Date;
+    authToken?: string;
+    tokenPayload: any;
+    userId?: number;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+    private TOKEN_KEY = 'TOKEN_KEY';
 
-  public login(username: string, password: string): Observable<any> {
-    const url = 'api/auth/login';
-    // this.authenticationClient.login(username, password).subscribe((token) => {
-    //   localStorage.setItem(this.tokenKey, token);
-    //   this.router.navigate(['/']);
-    // });
-    var context = { username: username, password: password };
+    constructor(private httpClient: HttpClient, private router: Router) {
+        let token = localStorage.getItem(this.TOKEN_KEY);
+        if (token) {
+            this.processLoginResponse({ token: token });
+        }
+    }
 
-    return this.httpClient.post<string>(url, context).pipe(
-      tap(resp => {
-        this.username = context.username;
-        this.processLoginResponse(resp);
-      }),
-      map(resp => true),
+    public login(username: string, password: string): Observable<any> {
+        const url = 'api/auth/login';
+        // this.authenticationClient.login(username, password).subscribe((token) => {
+        //   localStorage.setItem(this.tokenKey, token);
+        //   this.router.navigate(['/']);
+        // });
+        var context = { username: username, password: password };
 
-      catchError((error: HttpErrorResponse) => {
-        return throwError(() => error);
-      })
-    );
-  }
+        return this.httpClient.post<string>(url, context).pipe(
+            tap(resp => {
+                this.username = context.username;
+                this.processLoginResponse(resp);
+            }),
+            map(resp => true),
 
-  processLoginResponse(response: any) {
-    this.isLoggedIn = true;
-    this.loggedInDateTime = new Date();
-    this.authToken = response.token;
-    this.tokenPayload = jwtHelper.decodeToken(this.authToken!);
-    this.userId = this.tokenPayload.sub;
+            catchError((error: HttpErrorResponse) => {
+                return throwError(() => error);
+            })
+        );
+    }
 
-  };
+    processLoginResponse(response: any) {
+        this.isLoggedIn = true;
+        this.loggedInDateTime = new Date();
+        this.authToken = response.token;
+        this.tokenPayload = jwtHelper.decodeToken(this.authToken!);
+        this.userId = this.tokenPayload.sub;
+        localStorage.setItem(this.TOKEN_KEY, response.token)
+
+    };
 
 }
