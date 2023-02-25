@@ -1,0 +1,8 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <img *ngIf="imageUrl" class="image" [src]="imageUrl" (error)="imageLoadError()" [style.width.px]="width ? width : 20"
+    [style.height.px]="width ? width : 20">
+  <div *ngIf="!imageUrl" class="text" fxLayout="column" fxLayoutAlign="center center"
+    [style.background]="backgroundColour" [style.width.px]="width ? width : 20" [style.height.px]="width ? width : 20">
+    <div>{{text}}</div>
+  </div>
+</div>

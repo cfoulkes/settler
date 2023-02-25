@@ -16,10 +16,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { ImageOrTextComponent } from './components/image-or-text/image-or-text.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ImageOrTextComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
