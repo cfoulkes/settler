@@ -13,7 +13,10 @@ export class ShellComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  menuItem = new MenuItem('Clients', 'people', 'people', '/clients');
+  menuItems = [
+    new MenuItem('Home', 'home', 'home', '/dashboard'),
+    new MenuItem('Clients', 'people', 'people', '/clients')
+  ];
 
   /**
    *
