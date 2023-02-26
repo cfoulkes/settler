@@ -23,6 +23,7 @@ public class DataContext : DbContext
     public DbSet<UserStatus> UserStatuses => Set<UserStatus>();
 
     public DbSet<Client> Clients => Set<Client>();
+    public DbSet<UserProfile> UserProfiles => Set<UserProfile>();
 
     public override int SaveChanges()
     {
@@ -92,6 +93,25 @@ public class DataContext : DbContext
                         "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                     PasswordSalt =
                         "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7"
+                }
+            );
+
+        modelBuilder
+            .Entity<UserProfile>()
+            .HasData(
+                new UserProfile
+                {
+                    Id = 1,
+                    FirstName = "admin",
+                    LastName = "admin",
+                    LanguagePreference = "en-CA"
+                },
+                new UserProfile
+                {
+                    Id = 2,
+                    FirstName = "all",
+                    LastName = "all",
+                    LanguagePreference = "en-CA"
                 }
             );
 

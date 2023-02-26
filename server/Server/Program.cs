@@ -45,6 +45,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<ClientService>();
 builder.Services.AddScoped<ClientRepository>();
+builder.Services.AddScoped<UserProfileService>();
+builder.Services.AddScoped<UserProfileRepository>();
 
 var app = builder.Build();
 
