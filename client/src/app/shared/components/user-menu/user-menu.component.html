@@ -1,0 +1,15 @@
+<div class="header-section" fxLayout="row" fxLayoutAlign="center center">
+  <div class="profile-image-container" [matMenuTriggerFor]="menu">
+    <app-image-or-text
+      [backgroundColour]="backgroundColour"
+      [text]="initials"
+      [width]="32"
+    ></app-image-or-text>
+  </div>
+
+  <mat-menu #menu="matMenu">
+    <app-user-menu-popup
+      [userProfile]="userProfile"
+    ></app-user-menu-popup>
+  </mat-menu>
+</div>

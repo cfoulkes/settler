@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { UserProfile } from '../models/user-profile';
 
 const jwtHelper = new JwtHelperService();
 @Injectable({
@@ -16,6 +17,9 @@ export class AuthenticationService {
   authToken?: string;
   tokenPayload: any;
   userId?: number;
+
+  userProfile: UserProfile = new UserProfile({ firstName: 'Colin', lastName: 'Foulkes' });
+
 
   private TOKEN_KEY = 'TOKEN_KEY';
 

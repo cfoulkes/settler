@@ -16,12 +16,16 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 import { ImageOrTextComponent } from './components/image-or-text/image-or-text.component';
-
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { UserMenuPopupComponent } from './components/user-menu-popup/user-menu-popup.component';
 
 @NgModule({
   declarations: [
-    ImageOrTextComponent
+    ImageOrTextComponent,
+    UserMenuComponent,
+    UserMenuPopupComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,8 @@ import { ImageOrTextComponent } from './components/image-or-text/image-or-text.c
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    MatMenuModule,
   ],
   exports: [
     CommonModule,
@@ -57,7 +62,13 @@ import { ImageOrTextComponent } from './components/image-or-text/image-or-text.c
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatDividerModule
-  ]
+    MatDividerModule,
+    MatMenuModule,
+
+    ImageOrTextComponent,
+    UserMenuComponent,
+    UserMenuPopupComponent,
+
+  ],
 })
 export class SharedModule { }

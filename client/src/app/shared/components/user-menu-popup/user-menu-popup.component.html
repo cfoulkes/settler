@@ -1,0 +1,14 @@
+<div class="page">
+  <div class="header-section" fxLayout="row" fxLayoutAlign="left, center">
+    <div class="profile-image-container" fxLayoutAlign="center center">
+      <app-image-or-text [imageUrl]="userProfile.imageUrl" [backgroundColour]="backgroundColour" [text]="initials"
+        [width]="32"></app-image-or-text>
+    </div>
+    <div class="profile-name">{{userProfile.fullName}}</div>
+  </div>
+  <div class="separator"></div>
+  <!-- <div class="menu-item" mat-menu-item (click)="userSettingsClicked()">
+    {{'profileManagement.accountSettings' | translate}}</div> -->
+  <!-- <div class="menu-item" mat-menu-item (click)="logoutClicked()">{{'profileManagement.signOut' | translate}}</div> -->
+  <div class="menu-item" mat-menu-item (click)="logoutClicked()">Sign Out</div>
+</div>
