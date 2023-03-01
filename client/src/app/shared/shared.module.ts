@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ImageOrTextComponent } from './components/image-or-text/image-or-text.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { UserMenuPopupComponent } from './components/user-menu-popup/user-menu-popup.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserMenuPopupComponent } from './components/user-menu-popup/user-menu-p
     ReactiveFormsModule,
     FlexLayoutModule,
     LayoutModule,
+    TranslateModule,
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
@@ -53,6 +55,7 @@ import { UserMenuPopupComponent } from './components/user-menu-popup/user-menu-p
     ReactiveFormsModule,
     FlexLayoutModule,
     LayoutModule,
+    TranslateModule,
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,

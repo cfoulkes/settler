@@ -1,0 +1,16 @@
+{
+	"common": {
+		"validation": {
+			"required": "This is a required field."
+		}
+
+	},
+	"login": {
+		"email": "Email",
+		"password": "Password",
+		"emailRequired": "Email is required",
+		"passwordRequired": "Password is required",
+		"login": "Login"
+	}
+}
+
