@@ -5,5 +5,5 @@ using System.Threading.Tasks;
 
 namespace Server.Models
 {
-    public class UserStatus : ReferenceBase { }
+    public class AgencyStatus : ReferenceBase { }
 }

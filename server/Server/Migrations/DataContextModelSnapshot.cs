@@ -22,6 +22,123 @@ namespace Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Server.Models.Agency", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgencyStatusId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("NumberOfLicences")
+                        .HasColumnType("integer");
+
+                    b.Property<long>("RowVer")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgencyStatusId");
+
+                    b.ToTable("Agencies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AgencyStatusId = 1,
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6880),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6880),
+                            Name = "Test Agency 1",
+                            NumberOfLicences = 0,
+                            RowVer = 0L
+                        });
+                });
+
+            modelBuilder.Entity("Server.Models.AgencyStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<long>("RowVer")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AgencyStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6620),
+                            Description = "Active",
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6620),
+                            RowVer = 0L
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "",
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6630),
+                            Description = "Suspended",
+                            ModifiedBy = "",
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6630),
+                            RowVer = 0L
+                        });
+                });
+
             modelBuilder.Entity("Server.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -70,33 +187,33 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             FirstName = "Fred",
                             LastName = "Flintstone",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             RowVer = 0u
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             FirstName = "Wilma",
                             LastName = "Flintstone",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             RowVer = 0u
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             FirstName = "Barney",
                             LastName = "Rubble",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8610),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
                             RowVer = 0u
                         });
                 });
@@ -139,30 +256,30 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8490),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             Description = "Admin",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8490),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8490),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             Description = "Intake",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8490),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8490),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             Description = "Manager",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8500),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
                             RowVer = 0L
                         });
                 });
@@ -225,10 +342,10 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8520),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6690),
                             Email = "",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8520),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6690),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
                             RowVer = 0u,
@@ -239,10 +356,10 @@ namespace Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8520),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6850),
                             Email = "",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8530),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6850),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
                             RowVer = 0u,
@@ -258,6 +375,9 @@ namespace Server.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgencyId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -292,31 +412,22 @@ namespace Server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgencyId");
+
                     b.ToTable("UserProfiles");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8550),
-                            FirstName = "admin",
-                            LanguagePreference = "en-CA",
-                            LastName = "admin",
-                            ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8550),
-                            RowVer = 0L
-                        },
-                        new
-                        {
                             Id = 2,
+                            AgencyId = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8560),
-                            FirstName = "all",
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6900),
+                            FirstName = "All",
                             LanguagePreference = "en-CA",
-                            LastName = "all",
+                            LastName = "All",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8560),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6900),
                             RowVer = 0L
                         });
                 });
@@ -365,9 +476,9 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6810),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6810),
                             RoleId = 1,
                             RowVer = 0L,
                             UserId = 1
@@ -376,9 +487,9 @@ namespace Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             RoleId = 1,
                             RowVer = 0L,
                             UserId = 2
@@ -387,9 +498,9 @@ namespace Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             RoleId = 2,
                             RowVer = 0L,
                             UserId = 2
@@ -398,9 +509,9 @@ namespace Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8580),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
                             RoleId = 3,
                             RowVer = 0L,
                             UserId = 2
@@ -445,32 +556,43 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             Description = "Active",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             Description = "Pending",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             Description = "Locked",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 2, 26, 12, 31, 27, 754, DateTimeKind.Utc).AddTicks(8180),
+                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
                             RowVer = 0L
                         });
+                });
+
+            modelBuilder.Entity("Server.Models.Agency", b =>
+                {
+                    b.HasOne("Server.Models.AgencyStatus", "AgencyStatus")
+                        .WithMany()
+                        .HasForeignKey("AgencyStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AgencyStatus");
                 });
 
             modelBuilder.Entity("Server.Models.User", b =>
@@ -482,6 +604,17 @@ namespace Server.Migrations
                         .IsRequired();
 
                     b.Navigation("UserStatus");
+                });
+
+            modelBuilder.Entity("Server.Models.UserProfile", b =>
+                {
+                    b.HasOne("Server.Models.Agency", "Agency")
+                        .WithMany("Users")
+                        .HasForeignKey("AgencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agency");
                 });
 
             modelBuilder.Entity("Server.Models.UserRole", b =>
@@ -501,6 +634,11 @@ namespace Server.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Server.Models.Agency", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Server.Models.User", b =>

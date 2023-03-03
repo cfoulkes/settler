@@ -18,4 +18,8 @@ public class UserProfile : EntityBase
 
     [Required]
     public string LanguagePreference { get; set; } = string.Empty;
+
+    [Required]
+    public int AgencyId { get; set; }
+    public Agency? Agency { get; set; }
 }

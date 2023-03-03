@@ -5,5 +5,8 @@ using System.Threading.Tasks;
 
 namespace Server.Models
 {
-    public class UserStatus : ReferenceBase { }
+    public class ReferenceBase : EntityBase
+    {
+        public string Description { get; set; } = string.Empty;
+    }
 }
