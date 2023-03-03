@@ -76,7 +76,13 @@ public class AuthService : IAuthService
             return null;
         }
 
-        string tokenString = GenerateJwtToken(user);
+        UserProfile? userProfile = null;
+        if (user.UserRoles.ToList().Find(ur => ur.RoleId == 1) != null) //TODO - magic value
+        {
+            userProfile = await context.UserProfiles.FindAsync(user.Id);
+        }
+
+        string tokenString = GenerateJwtToken(user, userProfile);
         Console.WriteLine($"token {tokenString}");
 
         return tokenString;
@@ -119,7 +125,7 @@ public class AuthService : IAuthService
         return passwordHash.Equals(Convert.ToHexString(hash));
     }
 
-    private string GenerateJwtToken(User user)
+    private string GenerateJwtToken(User user, UserProfile userProfile)
     {
         var issuer = config["Jwt:Issuer"];
         var audience = config["Jwt:Audience"];
@@ -133,6 +139,11 @@ public class AuthService : IAuthService
             {
                 claims.Add(new Claim(ClaimTypes.Role, ur.Role.Description));
             });
+
+        if (userProfile != null)
+        {
+            claims.Add(new Claim("AgencyId", userProfile.AgencyId.ToString()));
+        }
 
         var signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
