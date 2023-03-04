@@ -7,7 +7,7 @@ import { RandomColourService } from '../../utils/random-colour.service';
 @Component({
   selector: 'app-user-menu-popup',
   templateUrl: './user-menu-popup.component.html',
-  styleUrls: ['./user-menu-popup.component.css'],
+  styleUrls: ['./user-menu-popup.component.scss'],
 })
 export class UserMenuPopupComponent {
   @Input()
