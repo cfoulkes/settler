@@ -14,8 +14,8 @@ export class ShellComponent {
   sidenav!: MatSidenav;
 
   menuItems = [
-    new MenuItem('Home', 'home', 'home', '/dashboard'),
-    new MenuItem('Clients', 'people', 'people', '/clients')
+    new MenuItem('mainMenu.home', 'home', 'home', '/dashboard'),
+    new MenuItem('mainMenu.clients', 'people', 'people', '/clients')
   ];
 
   /**

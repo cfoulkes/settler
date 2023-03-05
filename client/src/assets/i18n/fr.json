@@ -1,4 +1,15 @@
 {
+    "mainTitle": "FR Settler",
+
+    "maiMenu": {
+        "home": "FR Home",
+        "clients": "FR Clients"
+    },
+
+    "userMenu": {
+        "logout": "FR Log Out"
+    },
+
 	"common": {
 		"validation": {
 			"required": "FR This is a required field."

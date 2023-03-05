@@ -1,4 +1,15 @@
 {
+    "mainTitle": "Settler",
+
+    "mainMenu": {
+        "home": "Home",
+        "clients": "Clients"
+    },
+
+    "userMenu": {
+        "logout": "Log Out"
+    },
+
 	"common": {
 		"validation": {
 			"required": "This is a required field."
