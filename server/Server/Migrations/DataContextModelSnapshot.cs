@@ -73,10 +73,10 @@ namespace Server.Migrations
                             Id = 1,
                             AgencyStatusId = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6880),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5180),
                             Description = "",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6880),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5180),
                             Name = "Test Agency 1",
                             NumberOfLicences = 0,
                             RowVer = 0L
@@ -121,20 +121,20 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6620),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4970),
                             Description = "Active",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6620),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6630),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980),
                             Description = "Suspended",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6630),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980),
                             RowVer = 0L
                         });
                 });
@@ -187,33 +187,33 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220),
                             FirstName = "Fred",
                             LastName = "Flintstone",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220),
                             RowVer = 0u
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220),
                             FirstName = "Wilma",
                             LastName = "Flintstone",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220),
                             RowVer = 0u
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5230),
                             FirstName = "Barney",
                             LastName = "Rubble",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6930),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5230),
                             RowVer = 0u
                         });
                 });
@@ -256,30 +256,30 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000),
                             Description = "Admin",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000),
                             Description = "Intake",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5010),
                             Description = "Manager",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6660),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5010),
                             RowVer = 0L
                         });
                 });
@@ -301,7 +301,18 @@ namespace Server.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("ModifiedBy")
                         .IsRequired()
@@ -327,10 +338,6 @@ namespace Server.Migrations
                     b.Property<int>("UserStatusId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserStatusId");
@@ -342,29 +349,31 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6690),
-                            Email = "",
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5030),
+                            Email = "admin@settler.test",
+                            FirstName = "",
+                            LastName = "",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6690),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5030),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
                             RowVer = 0u,
-                            UserStatusId = 1,
-                            Username = "admin"
+                            UserStatusId = 1
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6850),
-                            Email = "",
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5160),
+                            Email = "all@settler.test",
+                            FirstName = "",
+                            LastName = "",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6850),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5160),
                             PasswordHash = "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                             PasswordSalt = "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7",
                             RowVer = 0u,
-                            UserStatusId = 1,
-                            Username = "all"
+                            UserStatusId = 1
                         });
                 });
 
@@ -422,12 +431,12 @@ namespace Server.Migrations
                             Id = 2,
                             AgencyId = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6900),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5210),
                             FirstName = "All",
                             LanguagePreference = "en-CA",
                             LastName = "All",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6900),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5210),
                             RowVer = 0L
                         });
                 });
@@ -476,9 +485,9 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6810),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5130),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6810),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5130),
                             RoleId = 1,
                             RowVer = 0L,
                             UserId = 1
@@ -487,9 +496,9 @@ namespace Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             RoleId = 1,
                             RowVer = 0L,
                             UserId = 2
@@ -498,9 +507,9 @@ namespace Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             RoleId = 2,
                             RowVer = 0L,
                             UserId = 2
@@ -509,9 +518,9 @@ namespace Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6820),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140),
                             RoleId = 3,
                             RowVer = 0L,
                             UserId = 2
@@ -556,30 +565,30 @@ namespace Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690),
                             Description = "Active",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690),
                             Description = "Pending",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690),
                             RowVer = 0L
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "",
-                            CreatedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            CreatedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4700),
                             Description = "Locked",
                             ModifiedBy = "",
-                            ModifiedDate = new DateTime(2023, 3, 3, 12, 24, 13, 765, DateTimeKind.Utc).AddTicks(6280),
+                            ModifiedDate = new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4700),
                             RowVer = 0L
                         });
                 });

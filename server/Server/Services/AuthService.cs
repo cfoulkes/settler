@@ -33,9 +33,9 @@ public class AuthService : IAuthService
             .ToListAsync();
     }
 
-    public async Task<User> CreateUser(string username, string password)
+    public async Task<User> CreateUser(string email, string password)
     {
-        var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        var existingUser = await context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
         if (existingUser != null)
         {
@@ -46,7 +46,7 @@ public class AuthService : IAuthService
 
         var user = new User
         {
-            Username = username,
+            Email = email,
             PasswordHash = passwordHash,
             PasswordSalt = passwordSalt
         };
@@ -57,12 +57,12 @@ public class AuthService : IAuthService
         return user;
     }
 
-    public async Task<string?> Login(string username, string password)
+    public async Task<string?> Login(string email, string password)
     {
         var user = await context.Users
             .Include(u => u.UserRoles)
             .ThenInclude(ur => ur.Role)
-            .FirstOrDefaultAsync(u => u.Username == username);
+            .FirstOrDefaultAsync(u => u.Email == email);
 
         if (user == null)
         {

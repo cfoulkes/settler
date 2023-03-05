@@ -12,7 +12,7 @@ const jwtHelper = new JwtHelperService();
 })
 export class AuthenticationService {
   isLoggedIn = false;
-  username?: string;
+  email?: string;
   loggedInDateTime?: Date;
   authToken?: string;
   tokenPayload: any;
@@ -31,13 +31,13 @@ export class AuthenticationService {
     }
   }
 
-  public login(username: string, password: string): Observable<any> {
+  public login(email: string, password: string): Observable<any> {
     const url = 'api/auth/login';
-    var context = { username: username, password: password };
+    var context = { email: email, password: password };
 
     return this.httpClient.post<string>(url, context).pipe(
       tap(resp => {
-        this.username = context.username;
+        this.email = context.email;
         this.processLoginResponse(resp);
       }),
       map(resp => true),
@@ -62,7 +62,7 @@ export class AuthenticationService {
     this.isLoggedIn = false;
     this.authToken = '';
     this.tokenPayload = null;
-    this.username = '';
+    this.email = '';
 
     localStorage.clear();
 

@@ -1,6 +1,6 @@
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Component, OnInit } from '@angular/core';
+import { Component, isDevMode, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.theForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      email: new FormControl(isDevMode() ? 'admin@settler.test' : '', [Validators.required, Validators.email]),
+      password: new FormControl(isDevMode() ? 'Password1!' : '', Validators.required),
     });
   }
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.authService.login(
-      this.theForm.get('username')!.value,
+      this.theForm.get('email')!.value,
       this.theForm!.get('password')!.value
     )
       .subscribe({

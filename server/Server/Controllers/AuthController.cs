@@ -43,7 +43,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var user = await AuthService.CreateUser(createUserDto.Username, createUserDto.Password);
+            var user = await AuthService.CreateUser(createUserDto.Email, createUserDto.Password);
             return Ok();
         }
         catch (Exception ex)
@@ -60,7 +60,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var token = await AuthService.Login(loginDto.Username, loginDto.Password);
+            var token = await AuthService.Login(loginDto.Email, loginDto.Password);
 
             if (token == null)
             {

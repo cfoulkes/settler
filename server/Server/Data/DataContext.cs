@@ -87,7 +87,7 @@ public class DataContext : DbContext
                 {
                     Id = 1,
                     UserStatusId = 1,
-                    Username = "admin",
+                    Email = "admin@settler.test",
                     PasswordHash =
                         "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                     PasswordSalt =
@@ -132,7 +132,7 @@ public class DataContext : DbContext
                 {
                     Id = 2,
                     UserStatusId = 1,
-                    Username = "all",
+                    Email = "all@settler.test",
                     PasswordHash =
                         "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D",
                     PasswordSalt =
