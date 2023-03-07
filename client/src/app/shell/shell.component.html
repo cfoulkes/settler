@@ -16,6 +16,13 @@
       <app-menu-item [menuItem]="item"></app-menu-item>
     </div>
 
+    <div class="vert-spacer"></div>
+
+    <div class="menu-item-container" *ngFor="let item of adminMenuItems">
+      <app-menu-item [menuItem]="item"></app-menu-item>
+    </div>
+
+
   </mat-sidenav>
 
   <mat-sidenav-content>

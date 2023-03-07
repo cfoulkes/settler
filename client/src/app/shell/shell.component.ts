@@ -18,6 +18,10 @@ export class ShellComponent {
     new MenuItem('mainMenu.clients', 'people', 'people', '/clients')
   ];
 
+  adminMenuItems = [
+    new MenuItem('mainMenu.staff', 'people', 'people', '/staff'),
+  ];
+
   /**
    *
    */

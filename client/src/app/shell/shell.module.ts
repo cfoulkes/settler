@@ -5,6 +5,7 @@ import { ShellComponent } from './shell.component';
 import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { ClientsModule } from '../clients/clients.module';
+import { AdminModule } from '../admin/admin.module';
 
 
 
@@ -14,7 +15,8 @@ import { ClientsModule } from '../clients/clients.module';
     CommonModule,
     RouterModule,
     SharedModule,
-    ClientsModule
+    ClientsModule,
+    AdminModule
   ]
 })
 export class ShellModule { }
