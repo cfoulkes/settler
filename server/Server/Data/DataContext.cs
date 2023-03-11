@@ -75,9 +75,10 @@ public class DataContext : DbContext
         modelBuilder
             .Entity<Role>()
             .HasData(
-                new Role { Id = 1, Description = "Admin" },
-                new Role { Id = 2, Description = "Intake" },
-                new Role { Id = 3, Description = "Manager" }
+                new Role { Id = 1, Description = "SysAdmin" },
+                new Role { Id = 2, Description = "Admin" },
+                new Role { Id = 3, Description = "Intake" },
+                new Role { Id = 4, Description = "Manager" }
             );
 
         modelBuilder
@@ -103,24 +104,6 @@ public class DataContext : DbContext
                     Id = 1,
                     UserId = 1,
                     RoleId = 1
-                },
-                new UserRole
-                {
-                    Id = 2,
-                    UserId = 2,
-                    RoleId = 1
-                },
-                new UserRole
-                {
-                    Id = 3,
-                    UserId = 2,
-                    RoleId = 2
-                },
-                new UserRole
-                {
-                    Id = 4,
-                    UserId = 2,
-                    RoleId = 3
                 }
             );
 
@@ -141,6 +124,29 @@ public class DataContext : DbContext
             );
 
         modelBuilder
+            .Entity<UserRole>()
+            .HasData(
+                new UserRole
+                {
+                    Id = 2,
+                    UserId = 2,
+                    RoleId = 1
+                },
+                new UserRole
+                {
+                    Id = 3,
+                    UserId = 2,
+                    RoleId = 2
+                },
+                new UserRole
+                {
+                    Id = 4,
+                    UserId = 2,
+                    RoleId = 3
+                }
+            );
+
+        modelBuilder
             .Entity<Agency>()
             .HasData(
                 new Agency
@@ -157,8 +163,6 @@ public class DataContext : DbContext
                 new UserProfile
                 {
                     Id = 2,
-                    FirstName = "All",
-                    LastName = "All",
                     LanguagePreference = "en-CA",
                     AgencyId = 1
                 }
@@ -171,19 +175,22 @@ public class DataContext : DbContext
                 {
                     Id = 1,
                     FirstName = "Fred",
-                    LastName = "Flintstone"
+                    LastName = "Flintstone",
+                    AgencyId = 1
                 },
                 new Client
                 {
                     Id = 2,
                     FirstName = "Wilma",
-                    LastName = "Flintstone"
+                    LastName = "Flintstone",
+                    AgencyId = 1
                 },
                 new Client
                 {
                     Id = 3,
                     FirstName = "Barney",
-                    LastName = "Rubble"
+                    LastName = "Rubble",
+                    AgencyId = 1
                 }
             );
     }

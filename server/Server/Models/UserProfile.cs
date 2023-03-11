@@ -9,14 +9,6 @@ namespace Server.Models;
 public class UserProfile : EntityBase
 {
     [Required]
-    [MaxLength(255)]
-    public string FirstName { get; set; } = string.Empty;
-
-    [Required]
-    [MaxLength(255)]
-    public string LastName { get; set; } = string.Empty;
-
-    [Required]
     public string LanguagePreference { get; set; } = string.Empty;
 
     [Required]

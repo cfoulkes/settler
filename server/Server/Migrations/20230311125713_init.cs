@@ -33,26 +33,6 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
-                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedBy = table.Column<string>(type: "text", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "text", nullable: false),
-                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Role",
                 columns: table => new
                 {
@@ -145,13 +125,38 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
+                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
+                    AgencyId = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatedBy = table.Column<string>(type: "text", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "text", nullable: false),
+                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clients_Agencies_AgencyId",
+                        column: x => x.AgencyId,
+                        principalTable: "Agencies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserProfiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     LanguagePreference = table.Column<string>(type: "text", nullable: false),
                     AgencyId = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -207,18 +212,8 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "RowVer" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4970), "Active", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980), 0L },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980), "Suspended", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4980), 0L }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Clients",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DateOfBirth", "FirstName", "LastName", "ModifiedBy", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220), null, "Fred", "Flintstone", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220) },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220), null, "Wilma", "Flintstone", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5220) },
-                    { 3, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5230), null, "Barney", "Rubble", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5230) }
+                    { 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9970), "Active", "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9970), 0L },
+                    { 2, "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9980), "Suspended", "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9980), 0L }
                 });
 
             migrationBuilder.InsertData(
@@ -226,9 +221,10 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "RowVer" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000), "Admin", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000), 0L },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000), "Intake", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5000), 0L },
-                    { 3, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5010), "Manager", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5010), 0L }
+                    { 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc), "SysAdmin", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), 0L },
+                    { 2, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), "Admin", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), 0L },
+                    { 3, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), "Intake", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), 0L },
+                    { 4, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), "Manager", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(10), 0L }
                 });
 
             migrationBuilder.InsertData(
@@ -236,45 +232,60 @@ namespace Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "RowVer" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690), "Active", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690), 0L },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690), "Pending", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4690), 0L },
-                    { 3, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4700), "Locked", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(4700), 0L }
+                    { 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), "Active", "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), 0L },
+                    { 2, "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), "Pending", "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), 0L },
+                    { 3, "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), "Locked", "", new DateTime(2023, 3, 11, 12, 57, 12, 957, DateTimeKind.Utc).AddTicks(9610), 0L }
                 });
 
             migrationBuilder.InsertData(
                 table: "Agencies",
                 columns: new[] { "Id", "AgencyStatusId", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "Name", "NumberOfLicences", "RowVer" },
-                values: new object[] { 1, 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5180), "", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5180), "Test Agency 1", 0, 0L });
+                values: new object[] { 1, 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(120), "", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(120), "Test Agency 1", 0, 0L });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "LastName", "ModifiedBy", "ModifiedDate", "PasswordHash", "PasswordSalt", "UserStatusId" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5030), "admin@settler.test", "", "", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5030), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1 },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5160), "all@settler.test", "", "", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5160), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1 }
+                    { 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(40), "admin@settler.test", "", "", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(40), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1 },
+                    { 2, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(80), "all@settler.test", "", "", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(80), "FC57D856266390FBEFE1E3BF64011C538A3CB25C4D048F867998351335F744059D6EB133A85FECC9B2A60088147EDDA18622FA95B3282C30BAAFABC0E1EA9A9D", "4A46744489B84AF9679B72BC470BC9401887A7CC2AA76D44CB450197BC05AC04633047A90949826784CD545CFA0885267FA8C1C9AE1918086D92DBC0FB5D64D7", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "Id", "AgencyId", "CreatedBy", "CreatedDate", "DateOfBirth", "FirstName", "LastName", "ModifiedBy", "ModifiedDate" },
+                values: new object[,]
+                {
+                    { 1, 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160), null, "Fred", "Flintstone", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160) },
+                    { 2, 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160), null, "Wilma", "Flintstone", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160) },
+                    { 3, 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160), null, "Barney", "Rubble", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(160) }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserProfiles",
-                columns: new[] { "Id", "AgencyId", "CreatedBy", "CreatedDate", "FirstName", "LanguagePreference", "LastName", "ModifiedBy", "ModifiedDate", "RowVer" },
-                values: new object[] { 2, 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5210), "All", "en-CA", "All", "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5210), 0L });
+                columns: new[] { "Id", "AgencyId", "CreatedBy", "CreatedDate", "LanguagePreference", "ModifiedBy", "ModifiedDate", "RowVer" },
+                values: new object[] { 2, 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(140), "en-CA", "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(140), 0L });
 
             migrationBuilder.InsertData(
                 table: "UserRole",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "ModifiedBy", "ModifiedDate", "RoleId", "RowVer", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5130), "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5130), 1, 0L, 1 },
-                    { 2, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), 1, 0L, 2 },
-                    { 3, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), 2, 0L, 2 },
-                    { 4, "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), "", new DateTime(2023, 3, 5, 13, 27, 45, 17, DateTimeKind.Utc).AddTicks(5140), 3, 0L, 2 }
+                    { 1, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(60), "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(60), 1, 0L, 1 },
+                    { 2, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(90), "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(90), 1, 0L, 2 },
+                    { 3, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(90), "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(90), 2, 0L, 2 },
+                    { 4, "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(100), "", new DateTime(2023, 3, 11, 12, 57, 12, 958, DateTimeKind.Utc).AddTicks(100), 3, 0L, 2 }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agencies_AgencyStatusId",
                 table: "Agencies",
                 column: "AgencyStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clients_AgencyId",
+                table: "Clients",
+                column: "AgencyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfiles_AgencyId",
