@@ -12,6 +12,7 @@ const jwtHelper = new JwtHelperService();
 })
 export class AuthenticationService {
   isLoggedIn = false;
+  isSystemAdmin = false;
   email?: string;
   loggedInDateTime?: Date;
   authToken?: string;
@@ -55,6 +56,16 @@ export class AuthenticationService {
     this.tokenPayload = jwtHelper.decodeToken(this.authToken!);
     this.userId = this.tokenPayload.sub;
     localStorage.setItem(this.TOKEN_KEY, response.token)
+
+    this.tokenPayload.uta.organization_roles.forEach((role: string) => {
+      switch (role) {
+        case "advisor": {
+          // this.userType = UserType.Advisor;
+          break;
+        }
+      }
+    });
+
 
   };
 

@@ -1,4 +1,4 @@
-<div class="menu-row" fxLayout="row" fxLayoutAlign="start center">
+<div class="menu-row" *ngIf="canDisplay" fxLayout="row" fxLayoutAlign="start center">
 
   <div class="menu-content" fxLayout="row" fxLayoutAlign="start center" [routerLink]="menuItem.routePath"
     routerLinkActive="active" #rla="routerLinkActive" (click)="onClicked()">

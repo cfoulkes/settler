@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../shared/auth/authentication.service';
 import { MenuItem } from './menu-item';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ViewChild } from '@angular/core';
@@ -18,14 +19,27 @@ export class ShellComponent {
     new MenuItem('mainMenu.clients', 'people', 'people', '/clients')
   ];
 
-  adminMenuItems = [
+  agencyAdminMenuItems = [
     new MenuItem('mainMenu.staff', 'people', 'people', '/staff'),
   ];
+
+  systemAdminMenuItems = [
+    new MenuItem('mainMenu.agencies', 'store', 'store', '/agencies'),
+  ];
+
+  get regularMenuItems() {
+    return this.menuItems;
+  }
+
+  get adminMenuItems() {
+    // if (this.authenticationService.isSystemAdmin)
+    return this.agencyAdminMenuItems;
+  }
 
   /**
    *
    */
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver, private authenticationService: AuthenticationService) { }
 
   ngAfterViewInit(): void {
     this.sidenav.mode = 'over';

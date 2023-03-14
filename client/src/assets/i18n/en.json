@@ -4,6 +4,7 @@
     "mainMenu": {
         "home": "Home",
         "clients": "Clients",
+        "agencies": "Agencies",
         "staff": "Staff"
     },
 
