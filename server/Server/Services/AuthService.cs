@@ -137,12 +137,12 @@ public class AuthService : IAuthService
             .ToList()
             .ForEach(ur =>
             {
-                claims.Add(new Claim(ClaimTypes.Role, ur.Role.Description));
+                claims.Add(new Claim("role", ur.Role.Description));
             });
 
         if (userProfile != null)
         {
-            claims.Add(new Claim("AgencyId", userProfile.AgencyId.ToString()));
+            claims.Add(new Claim("agencyId", userProfile.AgencyId.ToString()));
         }
 
         var signingCredentials = new SigningCredentials(
