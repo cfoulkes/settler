@@ -6,6 +6,7 @@ global using Server.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Server.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,27 +20,30 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(
-        o =>
-            o.TokenValidationParameters = new()
-            {
-                ValidateIssuer = true,
-                ValidateIssuerSigningKey = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                ValidAudience = builder.Configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
-                )
-            }
-    );
+    .AddJwtBearer(o =>
+    {
+        o.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateIssuerSigningKey = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
+            )
+        };
+        // o.SecurityTokenValidators.Clear();
+        // o.SecurityTokenValidators.Add(new SecurityTokenValidator());
+    });
 
 builder.Services
 // .AddEntityFrameworkNpgsql()
 .AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration["ConnectionString"]));
 
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddTransient<ISecurityTokenValidator, SecurityTokenValidator>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
