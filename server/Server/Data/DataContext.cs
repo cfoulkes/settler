@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Server.Models;
@@ -9,13 +10,11 @@ namespace Server.Data;
 
 public class DataContext : DbContext
 {
-    // static DataContext()
-    // {
-    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-    // }
+    private readonly IPrincipal principal;
 
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    public DataContext(DbContextOptions<DataContext> options, IPrincipal principal) : base(options)
     {
+        this.principal = principal;
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 

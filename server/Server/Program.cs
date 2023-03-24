@@ -34,8 +34,8 @@ builder.Services
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
             )
         };
-        // o.SecurityTokenValidators.Clear();
-        // o.SecurityTokenValidators.Add(new SecurityTokenValidator());
+        o.SecurityTokenValidators.Clear();
+        o.SecurityTokenValidators.Add(new SecurityTokenValidator());
     });
 
 builder.Services
