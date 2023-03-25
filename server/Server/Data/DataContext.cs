@@ -10,11 +10,15 @@ namespace Server.Data;
 
 public class DataContext : DbContext
 {
-    private readonly IPrincipal principal;
+    // private readonly IPrincipal principal;
 
-    public DataContext(DbContextOptions<DataContext> options, IPrincipal principal) : base(options)
+    // public DataContext(DbContextOptions<DataContext> options, IPrincipal principal) : base(options)
+    // {
+    //     this.principal = principal;
+    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    // }
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
-        this.principal = principal;
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 

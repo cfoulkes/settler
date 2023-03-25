@@ -17,6 +17,7 @@ export class ClientService {
     return this.httpClient.get<Client[]>(url)
       .pipe(
         map(res => {
+          console.log(res)
           return this.processGetClientsResult(res);
         })
       );
