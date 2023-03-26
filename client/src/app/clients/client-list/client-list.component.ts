@@ -10,6 +10,7 @@ import { Client } from '../models/client';
 export class ClientListComponent implements OnInit {
 
   clients: Client[] = [];
+  displayedColumns: string[] = ['id']
 
   constructor(private clientService: ClientService) { }
 

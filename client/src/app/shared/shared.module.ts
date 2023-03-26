@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
@@ -45,6 +46,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
+    MatTableModule,
     MatDividerModule,
     MatMenuModule,
   ],
@@ -65,6 +67,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
+    MatTableModule,
     MatDividerModule,
     MatMenuModule,
 
