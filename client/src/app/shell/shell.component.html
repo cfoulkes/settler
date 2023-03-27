@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+  <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
     <mat-icon *ngIf="sidenav.opened">close</mat-icon>
   </button>
@@ -10,7 +10,7 @@
 
 <mat-sidenav-container>
 
-  <mat-sidenav #sidenav="matSidenav">
+  <mat-sidenav #sidenav="matSidenav" [mode]="'side'" [opened]="true">
 
     <div class="menu-item-container" *ngFor="let item of regularMenuItems">
       <app-menu-item [menuItem]="item"></app-menu-item>
