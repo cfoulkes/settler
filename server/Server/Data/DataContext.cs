@@ -4,21 +4,21 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Server.Auth;
 using Server.Models;
 
 namespace Server.Data;
 
 public class DataContext : DbContext
 {
-    // private readonly IPrincipal principal;
+    public IHttpContextAccessor httpContextAccessor { get; }
 
-    // public DataContext(DbContextOptions<DataContext> options, IPrincipal principal) : base(options)
-    // {
-    //     this.principal = principal;
-    //     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-    // }
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    public DataContext(
+        DbContextOptions<DataContext> options,
+        IHttpContextAccessor httpContextAccessor
+    ) : base(options)
     {
+        this.httpContextAccessor = httpContextAccessor;
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 
@@ -32,6 +32,8 @@ public class DataContext : DbContext
 
     public override int SaveChanges()
     {
+        var identity = (CustomIdentity?)this.httpContextAccessor.HttpContext?.User.Identity;
+
         var entries = ChangeTracker
             .Entries()
             .Where(

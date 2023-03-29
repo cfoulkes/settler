@@ -34,13 +34,14 @@ builder.Services
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
             )
         };
-        // o.SecurityTokenValidators.Clear();
-        // o.SecurityTokenValidators.Add(new SecurityTokenValidator());
+        o.SecurityTokenValidators.Clear();
+        o.SecurityTokenValidators.Add(new SecurityTokenValidator());
     });
 
 builder.Services
 // .AddEntityFrameworkNpgsql()
 .AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration["ConnectionString"]));
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<ISecurityTokenValidator, SecurityTokenValidator>();
