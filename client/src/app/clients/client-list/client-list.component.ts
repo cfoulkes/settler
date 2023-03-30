@@ -1,6 +1,7 @@
 import { ClientService } from './../services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../models/client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-list',
@@ -12,7 +13,7 @@ export class ClientListComponent implements OnInit {
   clients: Client[] = [];
   displayedColumns: string[] = ['id']
 
-  constructor(private clientService: ClientService) { }
+  constructor(private router: Router, private clientService: ClientService) { }
 
 
 
@@ -22,4 +23,7 @@ export class ClientListComponent implements OnInit {
     })
   }
 
+  handleAddButtonClick() {
+    this.router.navigate(['/clients/0']);
+  }
 }

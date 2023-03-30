@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+export class AppModule { }
 import { HttpClientModule } from '@angular/common/http';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -22,12 +23,14 @@ import { ImageOrTextComponent } from './components/image-or-text/image-or-text.c
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { UserMenuPopupComponent } from './components/user-menu-popup/user-menu-popup.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
     ImageOrTextComponent,
     UserMenuComponent,
     UserMenuPopupComponent,
+    AddButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -74,7 +77,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ImageOrTextComponent,
     UserMenuComponent,
     UserMenuPopupComponent,
-
+    AddButtonComponent,
   ],
 })
 export class SharedModule { }

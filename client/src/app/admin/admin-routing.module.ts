@@ -1,3 +1,4 @@
+import { AgencyDetailComponent } from './agency-detail/agency-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Shell } from '../shell/shell';
@@ -7,6 +8,7 @@ import { StaffListComponent } from './staff-list/staff-list.component';
 const routes: Routes = [Shell.childRoutes([
   { path: "staff", component: StaffListComponent, pathMatch: "full" },
   { path: "agencies", component: AgencyListComponent, pathMatch: "full" },
+  { path: "agencies/:id", component: AgencyDetailComponent, pathMatch: "full" },
 ])];
 
 @NgModule({
