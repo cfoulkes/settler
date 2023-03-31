@@ -15,6 +15,7 @@ namespace Server.Controllers.Utilities
             CreateMap<UserProfile, UserProfileDto>();
 
             CreateMap<Client, ClientSearchDto>();
+            CreateMap<Agency, AgencyDto>();
         }
     }
 }

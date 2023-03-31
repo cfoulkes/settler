@@ -25,6 +25,7 @@ export class ShellComponent {
 
   systemAdminMenuItems = [
     new MenuItem('mainMenu.agencies', 'store', 'store', '/agencies'),
+    new MenuItem('mainMenu.staff', 'people', 'people', '/staff'),
   ];
 
   get regularMenuItems() {
@@ -32,7 +33,9 @@ export class ShellComponent {
   }
 
   get adminMenuItems() {
-    // if (this.authenticationService.isSystemAdmin)
+    if (this.authenticationService.isSystemAdmin) {
+      return this.systemAdminMenuItems;
+    }
     return this.agencyAdminMenuItems;
   }
 

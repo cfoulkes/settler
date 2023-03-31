@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-add-button',
-	templateUrl: './add-button.component.html',
-	styleUrls: ['./add-button.component.css'],
+  selector: 'app-add-button',
+  templateUrl: './add-button.component.html',
+  styleUrls: ['./add-button.component.scss'],
 })
 export class AddButtonComponent implements OnInit {
 
-	@Output() clicked: EventEmitter<any> = new EventEmitter<any>();
+  @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 
-	constructor(
-	) { }
+  constructor(
+  ) { }
 
-	ngOnInit() {
-	}
+  ngOnInit() {
+  }
 
-	onClicked() {
-		this.clicked.emit();
-	}
+  onClicked() {
+    this.clicked.emit();
+  }
 }

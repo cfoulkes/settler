@@ -52,6 +52,8 @@ builder.Services.AddScoped<ClientService>();
 builder.Services.AddScoped<ClientRepository>();
 builder.Services.AddScoped<UserProfileService>();
 builder.Services.AddScoped<UserProfileRepository>();
+builder.Services.AddScoped<AgencyService>();
+builder.Services.AddScoped<AgencyRepository>();
 
 var app = builder.Build();
 
