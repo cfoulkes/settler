@@ -18,6 +18,7 @@
 		}
 
 	},
+
 	"login": {
 		"email": "Email",
 		"password": "Password",
@@ -25,8 +26,14 @@
 		"passwordRequired": "Password is required",
 		"login": "Login"
 	},
-  "staff": {
 
-  }
+	"staff": {
+
+	},
+
+	"actions": {
+		"save": "Save",
+		"cancel": "Cancel"
+	}
 }
 

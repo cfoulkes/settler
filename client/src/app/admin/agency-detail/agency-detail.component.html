@@ -1,1 +1,14 @@
-<p>agency-detail works!</p>
+<form [formGroup]="theForm" novalidate autocomplete="off">
+
+  <label for="first-name"> Name: </label>
+  <input id="first-name" type="text" formControlName="name">
+
+
+  <div class="action-container" fxLayout="row" fxLayoutAlign="end center">
+    <button type="submit" mat-flat-button color="primary" class="save-btn" (click)="saveClicked()">
+      <span class="header-btn-text">{{'actions.save' | translate}}</span>
+    </button>
+  </div>
+
+  <!-- action bar -->
+</form>
