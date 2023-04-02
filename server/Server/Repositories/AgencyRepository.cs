@@ -18,5 +18,11 @@ namespace Server.Repositories
         {
             return await context.Agencies.ToListAsync();
         }
+
+        public async Task AddAgency(Agency agency)
+        {
+            await context.Agencies.AddAsync(agency);
+            await context.SaveChangesAsync();
+        }
     }
 }

@@ -34,4 +34,19 @@ export class AgencyService {
 
         return clients;
     }
+
+    addAgency(agency: any) {
+        let url = `/api/agency`;
+
+        return this.httpClient.post(url, agency).pipe(
+            map(res => {
+                return this.processAddAgencyResult(res);
+            })
+        );
+    }
+
+    processAddAgencyResult(res: any) {
+
+    }
+
 }

@@ -18,5 +18,11 @@ namespace Server.Services
         {
             return await agencyRepository.GetAllAgenciesAsync();
         }
+
+        public async Task<Agency> AddAgencyAsync(Agency agency)
+        {
+            await agencyRepository.AddAgency(agency);
+            return agency;
+        }
     }
 }

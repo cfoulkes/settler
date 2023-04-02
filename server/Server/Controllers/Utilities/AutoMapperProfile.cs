@@ -11,11 +11,15 @@ namespace Server.Controllers.Utilities
     {
         public AutoMapperProfile()
         {
+            // model => dto
             CreateMap<User, UserDto>();
             CreateMap<UserProfile, UserProfileDto>();
 
             CreateMap<Client, ClientSearchDto>();
             CreateMap<Agency, AgencyDto>();
+
+            // dto => model
+            CreateMap<AgencyDto, Agency>();
         }
     }
 }

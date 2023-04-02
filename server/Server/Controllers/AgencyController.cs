@@ -36,5 +36,22 @@ namespace Server.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<AgencyDto>> AddAgency(AgencyDto agencyDto)
+        {
+            try
+            {
+                var agency = mapper.Map<AgencyDto, Agency>(agencyDto);
+
+                agency = await agencyService.AddAgencyAsync(agency);
+                return Ok(mapper.Map<Agency, AgencyDto>(agency));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
     }
 }
