@@ -54,6 +54,7 @@ builder.Services.AddScoped<UserProfileService>();
 builder.Services.AddScoped<UserProfileRepository>();
 builder.Services.AddScoped<AgencyService>();
 builder.Services.AddScoped<AgencyRepository>();
+builder.Services.AddScoped<LookupService>();
 
 var app = builder.Build();
 

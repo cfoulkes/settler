@@ -18,6 +18,8 @@ namespace Server.Controllers.Utilities
             CreateMap<Client, ClientSearchDto>();
             CreateMap<Agency, AgencyDto>();
 
+            CreateMap<ReferenceBase, LookupDto>();
+
             // dto => model
             CreateMap<AgencyDto, Agency>();
         }
