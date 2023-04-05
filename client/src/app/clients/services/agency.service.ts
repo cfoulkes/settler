@@ -17,23 +17,31 @@ export class AgencyService {
         return this.httpClient.get<Agency[]>(url)
             .pipe(
                 map(res => {
-                    console.log(res)
-                    return this.processGetAgenciesResult(res);
+                    const clients = [];
+
+                    for (const item of res) {
+                        const client = new Agency(item);
+                        clients.push(client);
+                    }
+
+                    return clients;
                 })
             );
     }
 
-    processGetAgenciesResult(res: any): Agency[] {
-        console.log(`processGetAgenciesResult ${JSON.stringify(res)}`);
-        const clients = [];
+    getAgency(id: number): Observable<Agency> {
+        const url = `api/agency/${id}`;
 
-        for (const item of res) {
-            const client = new Agency(item);
-            clients.push(client);
-        }
-
-        return clients;
+        return this.httpClient.get<Agency>(url)
+            .pipe(
+                map(res => {
+                    console.log(res)
+                    return new Agency(res);
+                })
+            );
     }
+
+
 
     addAgency(agency: any) {
         let url = `/api/agency`;

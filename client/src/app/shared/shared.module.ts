@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
@@ -48,6 +49,7 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatSelectModule,
     MatSlideToggleModule,
     MatTableModule,
     MatDividerModule,
@@ -69,6 +71,7 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatSelectModule,
     MatSlideToggleModule,
     MatTableModule,
     MatDividerModule,
